@@ -13,14 +13,14 @@ export function MoreProjects(props: ProjectProps) {
   const { previous, next } = props
 
   return (
-    <div className="flex justify-between gap-x-5 pt-8 md:pt-20">
+    <div className="flex justify-between gap-x-4 pt-8 md:pt-20">
       {/* Previous project */}
       <div className="w-full">
         {previous && (
           <Link href={resolveHref(previous?._type, previous?.slug) ?? {}}>
-            <div className={`flex flex-col gap-x-5`}>
+            <div className={`flex flex-col gap-x-4`}>
               <div className="flex">
-                <div className="flex flex-wrap justify-between mt-2 mb-2 w-full text-sm md:text-2xl flex-strech">
+                <div className="flex flex-wrap justify-between mt-2 mb-2 w-full flex-strech">
                   {/* Title */}
                   <div className="flex">← {previous.title}</div>
                 </div>
@@ -41,9 +41,9 @@ export function MoreProjects(props: ProjectProps) {
       <div className="w-full">
         {next && (
           <Link href={resolveHref(next?._type, next?.slug) ?? {}}>
-            <div className={`flex flex-col gap-x-5 items-end`}>
+            <div className={`flex flex-col gap-x-4 items-end`}>
               <div className="flex">
-                <div className="flex flex-wrap justify-between mt-2 mb-2 w-full text-sm md:text-2xl flex-strech">
+                <div className="flex flex-wrap justify-between mt-2 mb-2 w-full flex-strech">
                   {/* Title */}
                   <div className="flex">{next.title} →</div>
                 </div>

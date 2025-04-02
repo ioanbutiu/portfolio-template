@@ -15,11 +15,13 @@ export const homePageQuery = groq`
         _type,
         asset,
         "lqip": asset->metadata.lqip,
+        "dimensions": asset->metadata.dimensions
       },
       overview,
       "slug": slug.current,
       title,
       year,
+      tags[]->
     },
     title,
   }
@@ -143,6 +145,7 @@ export const settingsQuery = groq`
         url,
       },
     },
+    footerLinks,
     ogImage,
     favIcon,
     bgColor {

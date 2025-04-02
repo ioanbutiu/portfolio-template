@@ -2,6 +2,7 @@ import './globals.css'
 
 // import { Inter } from 'next/font/google'
 import { loadSettings } from '@/sanity/loader/loadQuery'
+import { ThemeScript } from '@/components/global/ThemeScript'
 
 // const sans = Inter({
 //   variable: '--font-sans',
@@ -24,10 +25,11 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      // Assign custom color css variables for Tailwind to use as Tailwind variables
-      style={{ ['--color-primary' as any]: rgbaBgColor, ['--color-secondary' as any]: rgbaTextColor }}
-      className={`bg-primary`}
+      suppressHydrationWarning
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body>{children}</body>
     </html>
   )

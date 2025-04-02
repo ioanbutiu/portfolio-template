@@ -23,8 +23,8 @@ export default function VideoBox({
   }, [])
 
   return (
-    <div className="mt-5 md:mt-10">
-      <div className="grid gap-5 grid-cols-1 xl:grid-cols-2">
+    <div className="mt-4 md:mt-10">
+      <div className="grid gap4 grid-cols-1 xl:grid-cols-2">
         <div
           className={`w-full overflow-hidden rounded-[3px] bg-gray-50 aspect-video`}
         >
@@ -54,9 +54,7 @@ export default function VideoBox({
           )}
         </div>
       </div>
-      {caption && (
-        <div className="mt-2 md:mt-4 text-lg md:text-2xl">{caption}</div>
-      )}
+      {caption && <div className="mt-2 md:mt-4">{caption}</div>}
     </div>
   )
 }

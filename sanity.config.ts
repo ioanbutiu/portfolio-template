@@ -8,6 +8,7 @@ import { visionTool } from '@sanity/vision'
 import { defineConfig, NavbarProps, useWorkspace } from 'sanity'
 import { presentationTool } from 'sanity/presentation'
 import { structureTool } from 'sanity/structure'
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { media } from 'sanity-plugin-media'
 
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
@@ -15,20 +16,19 @@ import { Logo } from '@/sanity/plugins/Logo'
 import * as resolve from '@/sanity/plugins/resolve'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
 import project from '@/sanity/schemas/documents/project'
+import tag from '@/sanity/schemas/documents/tag'
 import about from '@/sanity/schemas/singletons/about'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 
-const title =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Collected | Portolio website editor with Sanity.io'
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'ioan.website'
 
 export default defineConfig({
   basePath: studioUrl,
   projectId: projectId || '',
   dataset: dataset || '',
   title,
-  icon: Logo,
+  // icon: Logo,
   schema: {
     // If you want more content types, you can add them to this array
     types: [
@@ -38,6 +38,7 @@ export default defineConfig({
       settings,
       // Documents
       project,
+      tag,
     ],
   },
   plugins: [
@@ -59,5 +60,7 @@ export default defineConfig({
     visionTool({ defaultApiVersion: apiVersion }),
     colorInput(),
     media(),
+    // Unsplash image asset source
+    unsplashImageAsset(),
   ],
 })

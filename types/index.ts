@@ -26,12 +26,21 @@ export interface LinkItem {
   title?: string
 }
 
+export interface Tag {
+  _id: string
+  title: string
+  color: {
+    hex: string
+  }
+}
+
 export interface ShowcaseProject {
+  _id: string
   _type: string
   coverImage?: Image
   overview?: PortableTextBlock[]
   slug?: string
-  tags?: string[]
+  tags?: Tag[],
   title?: string
   year?: string
   _updatedAt?: string
@@ -78,6 +87,7 @@ export interface SettingsPayload {
     page?: PageItem[]
     link?: LinkItem[]
   }
+  footerLinks?: LinkItem[]
   ogImage?: Image
   favIcon?: Image
   title?: string

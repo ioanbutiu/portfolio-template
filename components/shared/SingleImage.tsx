@@ -26,7 +26,7 @@ export default function ImageBox({
   const imageUrl = image && urlForImage(image)?.url()
 
   return (
-    <div className="mt-5 md:mt-10">
+    <div className="mt-4 md:mt-10">
       <div className={`w-full overflow-hidden rounded-[3px] ${classesWrapper}`}>
         {imageUrl && (
           <Image
@@ -44,9 +44,7 @@ export default function ImageBox({
           />
         )}
       </div>
-      {caption && (
-        <div className="mt-2 md:mt-4 text-lg md:text-2xl">{caption}</div>
-      )}
+      {caption && <div className="mt-2 md:mt-4">{caption}</div>}
     </div>
   )
 }

@@ -24,10 +24,10 @@ const variants = {
 }
 
 // Console Credits
-console.log(
-  '%cDesign & Web Development by Danil Vladimirov \n– https://danilvladimirov.co.uk',
-  'display:block;font-family:courier;font-size:12px;font-weight:bold;line-height:1;color:black;',
-)
+// console.log(
+//   '%cDesign & Web Development by Danil Vladimirov \n– https://danilvladimirov.co.uk',
+//   'display:block;font-family:courier;font-size:12px;font-weight:bold;line-height:1;color:black;',
+// )
 
 // Wrapping with framer motion
 export default function Template({ children }: { children: React.ReactNode }) {

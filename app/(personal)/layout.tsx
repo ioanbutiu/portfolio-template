@@ -6,8 +6,10 @@ import { draftMode } from 'next/headers'
 import { toPlainText } from 'next-sanity'
 import { Suspense } from 'react'
 
+import { BackgroundGrid } from '@/components/global/BackgroundGrid'
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
+import { ThemeProvider } from '@/components/global/ThemeProvider'
 import { urlForImage, urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
@@ -35,9 +37,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: homePage?.title
       ? {
-          template: `%s | ${homePage.title}`,
-          default: homePage.title || 'Personal website',
-        }
+        template: `%s | ${homePage.title}`,
+        default: homePage.title || 'Personal website',
+      }
       : undefined,
     description: homePage?.overview?.text
       ? toPlainText(homePage.overview.text)
@@ -67,19 +69,20 @@ export default async function IndexRoute({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <div className="flex min-h-screen flex-col text-secondary">
+    <ThemeProvider>
+      <div className="flex min-h-screen flex-col">
         <Suspense>
           <Navbar />
         </Suspense>
-        <div className="mt-16 flex-grow px-4 md:px-5 lg:px-5">
+        <div className="flex-grow px-4 md:px-4 lg:px-4">
           <Suspense>{children}</Suspense>
+          {/* <BackgroundGrid /> */}
         </div>
         <Suspense>
           <Footer />
         </Suspense>
       </div>
       {draftMode().isEnabled && <LiveVisualEditing />}
-    </>
+    </ThemeProvider>
   )
 }
