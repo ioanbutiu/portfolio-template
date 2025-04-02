@@ -73,7 +73,7 @@ export default function Navbar(props: NavbarProps) {
 
 
       </div>
-      <div className='h-full flex flex-wrap justify-end gap-1 mt-4 md:mt-0 col-span-3'>
+      <div className='self-stretch flex flex-wrap justify-end items-center gap-1 mt-4 md:mt-0 col-span-3'>
         {/* {footerLinks &&
           footerLinks.map((footerLink, key) => {
             return (

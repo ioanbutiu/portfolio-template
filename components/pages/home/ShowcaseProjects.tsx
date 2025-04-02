@@ -181,7 +181,7 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
             </div>
           </div>
         </div>
-        <div className="px-4 py-4 flex-grow bg-card">
+        <div className="px-4 py-4 flex-grow bg-card rounded-b-sm">
           {filteredProjects && filteredProjects.length > 0 ? (
             <div className='columns-1 lg:columns-2 xl:columns-3 gap-x-4 gap-y-8'>
               {filteredProjects.map((project, key) => {

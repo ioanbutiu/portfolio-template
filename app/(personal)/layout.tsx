@@ -79,7 +79,7 @@ export default async function IndexRoute({
           {/* <BackgroundGrid /> */}
         </div>
         <Suspense>
-          <Footer />
+          {/* <Footer /> */}
         </Suspense>
       </div>
       {draftMode().isEnabled && <LiveVisualEditing />}

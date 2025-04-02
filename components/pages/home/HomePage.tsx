@@ -20,7 +20,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   const { overview = [], showcaseProjects = [] } = data ?? {}
 
   return (
-    <div className="space-y-0 relative pb-12 overflow-visible">
+    <div className="space-y-0 pb-4 relative overflow-visible">
       {/* Header */}
       {overview && <Header description={overview} />}
       {/* Homepage Metadata */}

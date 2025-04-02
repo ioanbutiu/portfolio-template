@@ -9,7 +9,7 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={toggleTheme}
-      className='bg-card hover:bg-primary hover:text-primary-foreground rounded-sm flex items-center justify-center h-full w-auto aspect-square transition-colors p-2'
+      className='bg-card hover:bg-primary hover:text-primary-foreground rounded-sm flex items-center justify-center transition-colors h-7 w-7'
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (

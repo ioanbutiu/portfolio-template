@@ -93,7 +93,7 @@ export function HeaderLink(props: HeaderLinks) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <button className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 pt-2 pb-2 leading-none hover:bg-primary hover:text-primary-foreground transition-colors`}>
+          <button className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 min-h-7 pt-2 pb-2 leading-none hover:bg-primary hover:text-primary-foreground transition-colors`}>
             [C]{` `}{title}
           </button>
         </DialogTrigger>
@@ -129,7 +129,7 @@ export function HeaderLink(props: HeaderLinks) {
 
   // Return normal link for non-Contact links
   return (
-    <Link className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 pt-2 pb-2 leading-none hover:bg-primary hover:text-primary-foreground transition-colors`} href={href} target={target}>
+    <Link className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 pt-2 pb-2 leading-none hover:bg-primary hover:text-primary-foreground transition-colors min-h-7`} href={href} target={target}>
       [{title && href !== '/' ? title === 'Are.na' ? '*' : title === 'Instagram' ? 'N' : title.charAt(0) : '/'}]{` `}{title}
     </Link>
   )
