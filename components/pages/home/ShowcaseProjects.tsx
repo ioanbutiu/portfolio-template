@@ -162,7 +162,7 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
 
       {/* Right Col */}
       <div className='col-span-12 rounded-sm flex flex-col'>
-        <div ref={stickyBg} className='pt-16 sticky top-0 z-10'>
+        <div ref={stickyBg} id='sticky-bg' className='pt-16 sticky top-0 z-10'>
           <div className='font-mono uppercase text-xxs items-center leading-none border-b-2 border-background px-4 py-4 w-full flex justify-between bg-card h-12 rounded-t-sm'>
             <div>
               <span>{'Selected Work'}</span>
