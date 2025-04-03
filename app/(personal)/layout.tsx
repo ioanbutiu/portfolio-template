@@ -74,7 +74,7 @@ export default async function IndexRoute({
         <Suspense>
           <Navbar />
         </Suspense>
-        <div className="flex-grow px-4 md:px-4 lg:px-4">
+        <div className="flex-grow px-2 md:px-4 lg:px-4">
           <Suspense>{children}</Suspense>
           {/* <BackgroundGrid /> */}
         </div>

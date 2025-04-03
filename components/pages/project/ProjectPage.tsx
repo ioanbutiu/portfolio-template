@@ -35,7 +35,7 @@ export function ProjectPage({
   const nextProject = projects[currentProjectIndex + 1] || null
 
   return (
-    <div className='w-full'>
+    <div className='w-full px-2 md:px-0'>
       <div className='md:w-3/4 mx-auto'>
 
         <div className="mb-10 md:mb-20 space-y-4">

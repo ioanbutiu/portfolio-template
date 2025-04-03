@@ -1,6 +1,6 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
-import Link from 'next/link'
 import { Flower } from 'lucide-react'
+import Link from 'next/link'
 
 import AboutImageBox from '@/components/shared/AboutImageBox'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
@@ -18,7 +18,7 @@ export function AboutPage({ data }: AboutPageProps) {
   console.log(sections)
 
   return (
-    <div className="gap-4">
+    <div className="gap-4 px-2 md:px-0">
       <div className="w-full md:w-1/2 mx-auto my-12">
         {/* Title */}
         {/* <div>{title && title}</div> */}
@@ -26,7 +26,7 @@ export function AboutPage({ data }: AboutPageProps) {
         {/* {overview && (
           <div className="mt-2">
             <CustomPortableText value={overview} />
-          </div>
+        </div>
         )} */}
 
         {sections && sections.map((section) => {

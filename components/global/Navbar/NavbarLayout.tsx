@@ -34,9 +34,9 @@ export default function Navbar(props: NavbarProps) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("flex flex-wrap justify-between items-center gap-1 md:gap-2 px-4 md:py-4 lg:px-4 sticky top-0 z-50 w-full h-auto md:h-16 pt-4", pathname !== '/' ? '' : '')}>
+    <div className={cn("flex flex-wrap justify-between items-center gap-1 md:gap-2 p-2 md:p-4 lg:px-4 sticky top-0 z-50 w-full h-auto md:h-16", pathname !== '/' ? '' : '')}>
       {customLogo && customLogo ? (
-        <Link href={`/`} className={`h-full hover:text-secondary`}>
+        <Link href={`/`} className={`h-full md:hover:text-secondary`}>
           <div className="flex h-6">
             <Image
               alt={title}
