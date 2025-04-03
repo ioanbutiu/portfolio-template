@@ -51,6 +51,7 @@ export const aboutPageQuery = groq`
     title,
     customLogo,
     overview,
+    sections,
     aboutImage{
       _type,
       asset,
@@ -75,6 +76,7 @@ export const projectBySlugQuery = groq`
     coverImage,
     description,
     overview,
+    tags[]->,
     site,
     "slug": slug.current,
     title,
@@ -128,6 +130,23 @@ export const projectBySlugQuery = groq`
 
 export const projectPaths = groq`
   *[_type == "project" && slug.current != null].slug.current
+`
+
+export const allProjectsQuery = groq`
+  *[_type == "project" && defined(slug.current)] | order(title asc) {
+    _id,
+    _type,
+    title,
+    year,
+    "slug": slug.current,
+    coverImage{
+      _type,
+      asset,
+      "lqip": asset->metadata.lqip,
+    },
+    overview,
+    tags[]->
+  }
 `
 
 export const settingsQuery = groq`

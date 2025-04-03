@@ -22,7 +22,7 @@
 
     --secondary: 0 0% 40%;
 
-    --secondary-foreground: 0 0% 90%;
+    --secondary-foreground: 0 0% 80%;
 
     --muted: 0 0% 96.1%;
 
@@ -110,11 +110,13 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-primary;
+    @apply bg-background text-primary transition-colors;
   }
   a {
     @apply no-underline;
   }
 }
 
-/* No longer needed - removed to avoid conflicts */
+html {
+  scroll-behavior: smooth;
+}

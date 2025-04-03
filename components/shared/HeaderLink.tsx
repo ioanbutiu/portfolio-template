@@ -14,18 +14,23 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
+import { ProjectsDrawer } from '@/components/shared/ProjectsDrawer'
+import { ShowcaseProject } from '@/types'
+
 interface HeaderLinks {
   title?: string
   href?: any
   target?: string
+  projects?: ShowcaseProject[]
 }
 
 export function HeaderLink(props: HeaderLinks) {
-  const { title, href = '/', target = '' } = props
+  const { title, href = '/', target = '', projects = [] } = props
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const isContact = title === 'Contact'
+  const isIndex = title === 'Index'
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -40,7 +45,7 @@ export function HeaderLink(props: HeaderLinks) {
       const key = event.key.toLowerCase()
 
       // Handle contact dialog with 'c' key - toggle open/closed
-      if (key === 'c') {
+      if (key === 'c' && isContact) {
         event.preventDefault()
         setOpen(prevOpen => !prevOpen)
         return
@@ -72,6 +77,8 @@ export function HeaderLink(props: HeaderLinks) {
         title !== 'Are.na' &&
         title !== 'Instagram' &&
         title !== 'Contact' &&
+        title !== 'Index' &&
+        title !== 'Ioan Butiu' &&
         key === title.charAt(0).toLowerCase()) {
         event.preventDefault()
         if (target === '_blank') {
@@ -84,9 +91,20 @@ export function HeaderLink(props: HeaderLinks) {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [href, title, router, target, setOpen])
+  }, [href, title, router, target, setOpen, isContact])
 
   const isActive = pathname === href && href !== '/'
+
+  // Return link wrapped in a projects drawer if it's the Index link
+  if (isIndex && projects.length > 0) {
+    return (
+      <ProjectsDrawer projects={projects}>
+        <button className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 min-h-7 pt-2 pb-2 leading-none hover:bg-primary hover:text-primary-foreground transition-colors`}>
+          [I]{` `}{title}
+        </button>
+      </ProjectsDrawer>
+    )
+  }
 
   // Return link wrapped in a dialog if it's the Contact link
   if (isContact) {
@@ -101,7 +119,7 @@ export function HeaderLink(props: HeaderLinks) {
           <DialogHeader>
             <DialogTitle className="font-mono text-xxs uppercase font-normal h-8 flex items-center">Contact</DialogTitle>
             <DialogDescription className="pt-2 text-3xl text-secondary">
-              Get in touch through one of these channels:
+              Get in touch if you want more information about my work or if you'd like to discuss a project
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-2">
@@ -127,7 +145,7 @@ export function HeaderLink(props: HeaderLinks) {
     )
   }
 
-  // Return normal link for non-Contact links
+  // Return normal link for other links
   return (
     <Link className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 pt-2 pb-2 leading-none hover:bg-primary hover:text-primary-foreground transition-colors min-h-7`} href={href} target={target}>
       [{title && href !== '/' ? title === 'Are.na' ? '*' : title === 'Instagram' ? 'N' : title.charAt(0) : '/'}]{` `}{title}

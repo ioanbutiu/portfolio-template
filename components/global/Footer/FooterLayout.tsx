@@ -4,6 +4,7 @@ import { HeaderLink } from '@/components/shared/HeaderLink'
 import type { HomePagePayload, SettingsPayload } from '@/types'
 import { Clock, Navigation, RefreshCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 
 interface FooterProps {
@@ -39,12 +40,18 @@ export default function Footer(props: FooterProps) {
     return () => clearInterval(timer);
   }, []);
 
+  const pathname = usePathname()
+
+  if (pathname === '/') {
+    return null
+  }
+
   const title = props.title
   const lastUpdated = props.homepage?._updatedAt ?? ''
   const displayLastUpdate = props.data?.displayLastUpdated
   const footerLinks = props.data?.footerLinks
   return (
-    <footer className="fixed -z-10 uppercase text-xxs font-mono bottom-0 flex justify-between mt-12 lg:mt-0 gap-4 md:gap-x-4 px-4 md:px-4 py-2 md:py-4 lg:px-4 w-full">
+    <footer className="uppercase text-xxs font-mono bottom-0 flex justify-between mt-12 lg:mt-0 gap-4 md:gap-x-4 px-4 md:px-4 py-2 md:py-4 lg:px-4 w-full">
       {/* {displayLastUpdate == true ? (
         <div className="text-center md:text-left col-span-3 self-center col-start-4">
           {`Updated `}

@@ -1,17 +1,21 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { HeaderLink } from '@/components/shared/HeaderLink'
 import { Switch } from "@/components/ui/switch"
 import { resolveHref, urlForLogo } from '@/sanity/lib/utils'
-import type { LinkItem, PageItem, SettingsPayload } from '@/types'
+import type { LinkItem, PageItem, SettingsPayload, ShowcaseProject } from '@/types'
 import ThemeSwitch from './ThemeSwitch'
-
+import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 interface NavbarProps {
   data: SettingsPayload
   title: string | null
   logo: any | null
+  projects: ShowcaseProject[] | null
 }
 export default function Navbar(props: NavbarProps) {
   const { data } = props
@@ -26,8 +30,10 @@ export default function Navbar(props: NavbarProps) {
   const customLogo = props?.logo
   const logoImageUrl = customLogo && urlForLogo(customLogo)?.url()
 
+  const pathname = usePathname()
+
   return (
-    <div className="grid grid-cols-12 justify-between items-center gap-x-4 px-4 md:py-4 lg:px-4 sticky top-0 z-50 w-full h-16">
+    <div className={cn("flex justify-between items-center gap-x-4 px-4 md:py-4 lg:px-4 sticky top-0 z-50 w-full h-16", pathname !== '/' ? 'bg-background/80 backdrop-blur-lg' : '')}>
       {customLogo && customLogo ? (
         <Link href={`/`} className={`h-full hover:text-secondary`}>
           <div className="flex h-6">
@@ -42,15 +48,15 @@ export default function Navbar(props: NavbarProps) {
           </div>
         </Link>
       ) : (
-        <div className='col-span-3 leading-none flex flex-wrap gap-1 mt-4 md:mt-0'>
+        <div className='w-48 leading-none flex flex-wrap gap-1 mt-4 md:mt-0'>
 
           <HeaderLink href={`/`} title={title} />
         </div>
 
 
       )}
-      <div className="flex flex-wrap gap-1 mt-4 md:mt-0 col-span-6 justify-center">
-        <HeaderLink href={'/index'} title={'Index'} />
+      <div className={cn("flex flex-wrap gap-1 mt-4 md:mt-0 col-span-6 justify-center w-max", pathname !== '/' ? '' : '')}>
+
         {menuPages &&
           menuPages.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug)
@@ -67,13 +73,14 @@ export default function Navbar(props: NavbarProps) {
             )
           })}
         <HeaderLink href='#' title={'Contact'} />
+        <HeaderLink href={'#'} title={'Index'} projects={props.projects || []} />
         {/* <HeaderLink target={'_blank'} href={'mailto:ioan.butiu@gmail.com'} title={'Email'} /> */}
         {/* <HeaderLink href={'/blog'} title={'Blog'} /> */}
         {/* <HeaderLink href={'/guestbook'} title={'Guestbook'} /> */}
 
 
       </div>
-      <div className='self-stretch flex flex-wrap justify-end items-center gap-1 mt-4 md:mt-0 col-span-3'>
+      <div className={cn('w-48 flex justify-end', pathname !== '/' ? '' : '')}>
         {/* {footerLinks &&
           footerLinks.map((footerLink, key) => {
             return (
@@ -83,6 +90,6 @@ export default function Navbar(props: NavbarProps) {
         <ThemeSwitch />
         {/* <Switch /> */}
       </div>
-    </div>
+    </div >
   )
 }

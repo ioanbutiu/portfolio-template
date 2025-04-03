@@ -10,16 +10,16 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
-        type: 'string',
-        name: 'title',
-        title: 'Title',
-        description: 'This is your title for About page that will be displayed in the header of your website.',
-        validation: (rule) => rule.required(),
+      type: 'string',
+      name: 'title',
+      title: 'Title',
+      description:
+        'This is your title for About page that will be displayed in the header of your website.',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'overview',
-      description:
-        'This field is for your About description.',
+      description: 'This field is for your About description.',
       title: 'Description',
       type: 'array',
       of: [
@@ -59,6 +59,26 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'sections',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'heading',
+              type: 'string',
+            }),
+            defineField({
+              name: 'content',
+              type: 'array',
+              of: [{ type: 'block' }],
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: 'aboutImage',
       title: 'About Image',
       description:
@@ -71,48 +91,49 @@ export default defineType({
     defineField({
       name: 'aboutLinks',
       title: 'External links',
-      description: '(Optional) Here you can add a list of external links, it will be displayed below your About description text.',
+      description:
+        '(Optional) Here you can add a list of external links, it will be displayed below your About description text.',
       type: 'array',
       of: [
         {
-        title: 'Link',
-        name: 'navLink',
-        type: 'object',
-        icon: LinkIcon,
-        fields: [
-          {
-            title: 'Title',
-            name: 'title',
-            type: 'string',
-            description: 'Display Text'
-          },
-          {
-            title: 'URL',
-            name: 'url',
-            type: 'url',
-            description: 'enter an external URL',
-            validation: Rule =>
-            Rule.uri({
-              scheme: ['http', 'https', 'mailto', 'tel']
-            }),
-          },
-        ],
-        preview: {
-          select: {
-            title: 'title',
-            url: 'url'
-          },
-          prepare({ title, url }) {
-            return {
-              title: title,
-              subtitle: url,
-              media: LinkIcon,
-            }
+          title: 'Link',
+          name: 'navLink',
+          type: 'object',
+          icon: LinkIcon,
+          fields: [
+            {
+              title: 'Title',
+              name: 'title',
+              type: 'string',
+              description: 'Display Text',
+            },
+            {
+              title: 'URL',
+              name: 'url',
+              type: 'url',
+              description: 'enter an external URL',
+              validation: (Rule) =>
+                Rule.uri({
+                  scheme: ['http', 'https', 'mailto', 'tel'],
+                }),
+            },
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              url: 'url',
+            },
+            prepare({ title, url }) {
+              return {
+                title: title,
+                subtitle: url,
+                media: LinkIcon,
+              }
+            },
           },
         },
-      },
-    ],
-  }),
+      ],
+    }),
   ],
   preview: {
     prepare() {

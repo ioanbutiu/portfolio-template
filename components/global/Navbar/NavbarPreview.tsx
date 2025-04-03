@@ -8,10 +8,11 @@ type Props = {
   initial: Parameters<typeof useSettings>[0]
   title: any
   logo: any
+  projects: any
 }
 
 export default function NavbarPreview(props: Props) {
   const { data } = useSettings(props.initial)
 
-  return <NavbarLayout data={data!} title={props?.title} logo={props?.logo} />
+  return <NavbarLayout data={data!} title={props?.title} logo={props?.logo} projects={props?.projects} />
 }

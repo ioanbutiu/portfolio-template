@@ -40,7 +40,7 @@ export interface ShowcaseProject {
   coverImage?: Image
   overview?: PortableTextBlock[]
   slug?: string
-  tags?: Tag[],
+  tags?: Tag[]
   title?: string
   year?: string
   _updatedAt?: string
@@ -67,7 +67,7 @@ export interface ProjectPayload {
     url: string
   }
   slug: string
-  tags?: string[]
+  tags?: Tag[]
   title?: string
   content?: Content[]
 }
@@ -107,6 +107,11 @@ export interface SettingsPayload {
 export interface AboutPayload {
   overview?: PortableTextBlock[]
   title?: string
+  sections?: {
+    _key: string
+    heading: string
+    content: any
+  }[]
   aboutImage?: {
     asset: Image
     width: number

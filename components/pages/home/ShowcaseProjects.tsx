@@ -31,7 +31,7 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
     const checkPosition = () => {
       if (stickyBg.current) {
         const rect = stickyBg.current.getBoundingClientRect()
-        const hasReachedTop = rect.top <= 0
+        const hasReachedTop = rect.top <= 100
 
         // Set background color based on position
         stickyBg.current.style.background = hasReachedTop
@@ -184,25 +184,6 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
         <div className="px-4 py-4 flex-grow bg-card rounded-b-sm">
           {filteredProjects && filteredProjects.length > 0 ? (
             <div className='columns-1 lg:columns-2 xl:columns-3 gap-x-4 gap-y-8'>
-              {filteredProjects.map((project, key) => {
-                const href = resolveHref(project?._type, project?.slug)
-                if (!href) {
-                  return null
-                }
-                return (
-                  <Link
-                    key={project._id}
-                    href={href}
-                    data-sanity={encodeDataAttribute?.([
-                      'showcaseProjects',
-                      key.toString(),
-                      'slug',
-                    ])}
-                  >
-                    <ProjectListItem project={project} />
-                  </Link>
-                )
-              })}
               {filteredProjects.map((project, key) => {
                 const href = resolveHref(project?._type, project?.slug)
                 if (!href) {

@@ -10,15 +10,15 @@ export function ProjectListItem(props: ProjectProps) {
   const { project } = props
 
   return (
-    <div className={`flex flex-col gap-y-0 break-inside-avoid mb-4`}>
-      <div className="w-full">
+    <div className={`flex flex-col gap-y-0 break-inside-avoid mb-4 group`}>
+      <div className="w-full overflow-hidden rounded-sm">
         <ImageBox
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
-          classesWrapper="relative"
+          classesWrapper="relative group-hover:scale-[104%] transition-all duration-400 aspect-[3/2]"
         />
       </div>
-      <div className="flex">
+      <div className="flex group-hover:opacity-70 transition-opacity duration-400">
         <TextBox project={project} />
       </div>
     </div>
@@ -27,9 +27,9 @@ export function ProjectListItem(props: ProjectProps) {
 
 function TextBox({ project }: { project: ShowcaseProject }) {
   return (
-    <div className="flex justify-between mt-2 mb-2 w-full items-start">
+    <div className="flex flex-col justify-between mt-4 mb-4 gap-2 w-full items-start">
       {/* Title */}
-      <div className="flex text-xl">{project.title}</div>
+      <div className="flex text-2xl">{project.title}</div>
       <div className='flex gap-1'>
 
 

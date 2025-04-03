@@ -6,6 +6,7 @@ import { draftMode } from 'next/headers'
 import { client } from '@/sanity/lib/client'
 import {
   aboutPageQuery,
+  allProjectsQuery,
   homePageQuery,
   homePageTitleQuery,
   moreProjectsQuery,
@@ -18,6 +19,7 @@ import {
   HomePagePayload,
   ProjectPayload,
   SettingsPayload,
+  ShowcaseProject,
 } from '@/types'
 
 const serverClient = client.withConfig({
@@ -119,3 +121,11 @@ export function loadProject(slug: string) {
 //     { next: { tags: [`project`] } },
 //   )
 // }
+
+export function loadAllProjects() {
+  return loadQuery<ShowcaseProject[]>(
+    allProjectsQuery,
+    {},
+    { next: { tags: ['project'] } },
+  )
+}

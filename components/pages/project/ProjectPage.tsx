@@ -21,7 +21,7 @@ export function ProjectPage({
   encodeDataAttribute,
 }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { year, overview, site, title, content, slug } = data ?? {}
+  const { year, overview, site, tags, title, content, slug } = data ?? {}
 
   // Get a list of showcased projects
   const { showcaseProjects = [] } = moreProjects ?? {}
@@ -35,24 +35,30 @@ export function ProjectPage({
   const nextProject = projects[currentProjectIndex + 1] || null
 
   return (
-    <div>
-      <div className="mb-10 md:mb-20 space-y-4">
-        <ProjectHeader
-          title={title}
-          year={year}
-          site={site}
-          overview={overview}
-        />
-        <div>
-          {/* Display project content by type */}
-          {content?.map((content, key) => (
-            <Module key={key} content={content} />
-          ))}
+    <div className='w-full'>
+      <div className='md:w-3/4 mx-auto'>
+
+        <div className="mb-10 md:mb-20 space-y-4">
+          <ProjectHeader
+            title={title}
+            year={year}
+            tags={tags}
+            site={site}
+            overview={overview}
+          />
+          <div>
+            {/* Display project content by type */}
+            {content?.map((content, key) => (
+              <Module key={key} content={content} />
+            ))}
+          </div>
         </div>
 
-        {/* Previous and next project links */}
-        {projects && <MoreProjects previous={prevProject} next={nextProject} />}
       </div>
+
+      {/* Previous and next project links */}
+      {projects && <MoreProjects previous={prevProject} next={nextProject} />}
+
     </div>
   )
 }

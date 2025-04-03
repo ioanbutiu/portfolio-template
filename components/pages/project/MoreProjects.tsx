@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ImageBox from '@/components/shared/ImageBox'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { ShowcaseProject } from '@/types'
+import { ArrowRight, ArrowLeft } from 'lucide-react'
 
 interface ProjectProps {
   previous: ShowcaseProject
@@ -15,21 +16,20 @@ export function MoreProjects(props: ProjectProps) {
   return (
     <div className="flex justify-between gap-x-4 pt-8 md:pt-20">
       {/* Previous project */}
-      <div className="w-full">
+      <div className="">
         {previous && (
-          <Link href={resolveHref(previous?._type, previous?.slug) ?? {}}>
-            <div className={`flex flex-col gap-x-4`}>
-              <div className="flex">
-                <div className="flex flex-wrap justify-between mt-2 mb-2 w-full flex-strech">
-                  {/* Title */}
-                  <div className="flex">← {previous.title}</div>
-                </div>
-              </div>
-              <div className="w-3/4 md:w-2/4">
+          <Link href={resolveHref(previous?._type, previous?.slug) ?? {}} className='bg-card group'>
+            <div className={`flex flex-col gap-4 bg-card p-2 rounded-sm`}>
+
+              {/* Title */}
+              <div className="flex items-center uppercase text-xxs font-mono gap-2 group-hover:opacity-70 transition-opacity duration-400"><ArrowLeft size={12} /> {previous.title}</div>
+
+
+              <div className="w-96 overflow-hidden rounded-sm">
                 <ImageBox
                   image={previous.coverImage}
                   alt={`Cover image from ${previous.title}`}
-                  classesWrapper="relative aspect-[16/9]"
+                  classesWrapper="relative aspect-[3/2] group-hover:scale-[104%] transition-all duration-400"
                 />
               </div>
             </div>
@@ -38,27 +38,24 @@ export function MoreProjects(props: ProjectProps) {
       </div>
 
       {/* Next project */}
-      <div className="w-full">
+      <div className="">
         {next && (
-          <Link href={resolveHref(next?._type, next?.slug) ?? {}}>
-            <div className={`flex flex-col gap-x-4 items-end`}>
-              <div className="flex">
-                <div className="flex flex-wrap justify-between mt-2 mb-2 w-full flex-strech">
-                  {/* Title */}
-                  <div className="flex">{next.title} →</div>
-                </div>
-              </div>
-              <div className="w-3/4 md:w-2/4">
+          <Link href={resolveHref(next?._type, next?.slug) ?? {}} className='bg-card group'>
+            <div className={`flex flex-col gap-4 bg-card p-2 rounded-sm items-end`}>
+              {/* Title */}
+              <div className="flex items-center uppercase text-xxs font-mono gap-2 group-hover:opacity-70 transition-opacity duration-400">{next.title} <ArrowRight size={12} /></div>
+
+              <div className="w-96 overflow-hidden rounded-sm h-auto aspect-[3/2]">
                 <ImageBox
                   image={next.coverImage}
                   alt={`Cover image from ${next.title}`}
-                  classesWrapper="relative aspect-[16/9]"
+                  classesWrapper="relative aspect-[3/2] group-hover:scale-[104%] transition-all duration-400 h-full w-auto object-cover"
                 />
               </div>
             </div>
           </Link>
         )}
       </div>
-    </div>
+    </div >
   )
 }
