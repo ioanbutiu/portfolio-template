@@ -30,9 +30,7 @@ function TextBox({ project }: { project: ShowcaseProject }) {
     <div className="flex flex-col justify-between mt-4 mb-4 gap-2 w-full items-start">
       {/* Title */}
       <div className="flex text-2xl">{project.title}</div>
-      <div className='flex gap-1'>
-
-
+      <div className='flex gap-1 flex-wrap'>
         {/* Tags */}
         {project.tags && project.tags.map((tag) => {
           return <ProjectTag key={tag._id} {...tag} />

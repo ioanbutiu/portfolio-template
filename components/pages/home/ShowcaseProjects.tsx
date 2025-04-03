@@ -163,14 +163,14 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
       {/* Right Col */}
       <div className='col-span-12 rounded-sm flex flex-col'>
         <div ref={stickyBg} id='sticky-bg' className='pt-16 sticky top-0 z-10'>
-          <div className='font-mono uppercase text-xxs items-center leading-none border-b-2 border-background px-4 py-4 w-full flex justify-between bg-card h-12 rounded-t-sm'>
-            <div>
+          <div className='font-mono uppercase text-xxs md:items-center leading-none border-b-2 border-background px-4 py-4 w-full flex flex-col md:flex-row md:justify-between bg-card gap-4 items-start md:h-12 rounded-t-sm'>
+            <div className=''>
               <span>{'Selected Work'}</span>
               <span>{' '}</span>
               <span>({filteredProjects.length})</span>
             </div>
-            <div className='flex items-center gap-2'>
-              <span>{'Filter'}</span>
+            <div className='flex flex-col items-start md:flex-row md:items-center gap-4'>
+              <span className='hidden md:block'>{'Filter'}</span>
               {showcaseProjects && showcaseProjects.length > 0 && (
                 <ProjectFilters
                   projects={showcaseProjects}

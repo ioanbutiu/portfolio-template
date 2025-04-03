@@ -76,30 +76,49 @@ export function ProjectsDrawer({ projects, children }: ProjectsDrawerProps) {
                   key={project._id}
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="group flex gap-16 items-center justify-start hover:bg-card transition-all p-4"
+                  className="group flex flex-row items-start gap-4 md:gap-16 md:items-center justify-start hover:bg-card transition-all p-4"
                 >
-                  <div className="w-32 h-auto aspect-[3/2] overflow-hidden rounded-sm">
+                  <div className="w-16 md:w-32 h-auto aspect-[3/2] overflow-hidden rounded-sm shrink-0">
                     <ImageBox
                       image={project.coverImage}
                       alt={`Cover image from ${project.title}`}
                       classesWrapper="relative group-hover:scale-[104%] transition-all duration-400 aspect-[3/2]"
                     />
                   </div>
-                  <div className='w-2/5'>
+                  <div className='flex flex-col md:flex-row grow'>
+                    <div className='md:w-2/5'>
+
+                      <span className="text-xl">{project.title}</span>
+                    </div>
+                    <div className='hidden md:flex gap-2 grow'>
+                      {/* Tags */}
+                      {project.tags && project.tags.slice(0, project.tags.length - 1).map((tag) => {
+                        return <ProjectTag key={tag._id} {...tag} />
+                      })}
+                    </div>
+                    <div className='hidden md:block'>
+                      {/* Year */}
+                      {project.tags && project.tags.slice(project.tags.length - 1).map((tag) => {
+                        return <ProjectTag key={tag._id} {...tag} />
+                      })}
+                    </div>
+                    {/* Mobile tags */}
+                    {/* <div className='flex md:hidden gap-2 flex-wrap'>
+                      {project.tags && project.tags.map((tag) => {
+                        return <ProjectTag key={tag._id} {...tag} />
+                      })}
+                    </div> */}
+                  </div>
+
+                  {/* <div className='flex md:hidden'>
                     <span className="text-xl">{project.title}</span>
-                  </div>
-                  <div className='flex gap-2 grow'>
-                    {/* Tags */}
-                    {project.tags && project.tags.slice(0, project.tags.length - 1).map((tag) => {
-                      return <ProjectTag key={tag._id} {...tag} />
-                    })}
-                  </div>
-                  <div className=''>
-                    {/* Year */}
-                    {project.tags && project.tags.slice(project.tags.length - 1).map((tag) => {
-                      return <ProjectTag key={tag._id} {...tag} />
-                    })}
-                  </div>
+                    <div className='flex gap-2 grow'>
+                      {project.tags && project.tags.map((tag) => {
+                        return <ProjectTag key={tag._id} {...tag} />
+                      })}
+                    </div>
+                  </div> */}
+
 
                 </Link>
               )

@@ -33,7 +33,7 @@ export default function Navbar(props: NavbarProps) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("flex justify-between items-center gap-x-4 px-4 md:py-4 lg:px-4 sticky top-0 z-50 w-full h-16", pathname !== '/' ? 'bg-background/80 backdrop-blur-lg' : '')}>
+    <div className={cn("flex flex-wrap justify-between items-center gap-x-2 gap-y-2 px-4 md:py-4 lg:px-4 sticky top-0 z-50 w-full h-auto md:h-16 pt-4", pathname !== '/' ? '' : '')}>
       {customLogo && customLogo ? (
         <Link href={`/`} className={`h-full hover:text-secondary`}>
           <div className="flex h-6">
@@ -48,14 +48,14 @@ export default function Navbar(props: NavbarProps) {
           </div>
         </Link>
       ) : (
-        <div className='w-48 leading-none flex flex-wrap gap-1 mt-4 md:mt-0'>
+        <div className='w-auto md:w-48 leading-none flex flex-wrap gap-1 grow md:grow-0'>
 
           <HeaderLink href={`/`} title={title} />
         </div>
 
 
       )}
-      <div className={cn("flex flex-wrap gap-1 mt-4 md:mt-0 col-span-6 justify-center w-max", pathname !== '/' ? '' : '')}>
+      <div className={cn("flex flex-wrap order-3 md:order-none w-full gap-2 md:gap-1 col-span-6 justify-center md:w-max", pathname !== '/' ? '' : '')}>
 
         {menuPages &&
           menuPages.map((menuItem, key) => {
@@ -80,7 +80,7 @@ export default function Navbar(props: NavbarProps) {
 
 
       </div>
-      <div className={cn('w-48 flex justify-end', pathname !== '/' ? '' : '')}>
+      <div className={cn('w-auto md:w-48 flex justify-end', pathname !== '/' ? '' : '')}>
         {/* {footerLinks &&
           footerLinks.map((footerLink, key) => {
             return (

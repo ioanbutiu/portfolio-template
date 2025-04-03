@@ -69,7 +69,7 @@ export default function Footer(props: FooterProps) {
             )
           })}
       </div> */}
-      <div className='flex gap-8'>
+      <div className='flex flex-col md:flex-row gap-2 md:gap-8'>
         <div className='flex items-center gap-2 align-middle'>
           <span className='text-primary'>
             <Navigation size={14} />
@@ -82,7 +82,7 @@ export default function Footer(props: FooterProps) {
           </span>
           {time}
         </div>
-        <div className='flex items-center gap-2 align-middle'>
+        <div className='hidden md:flex items-center gap-2 align-middle'>
           <span className='text-primary'>
             <RefreshCcw size={14} />
           </span>
@@ -96,13 +96,20 @@ export default function Footer(props: FooterProps) {
         </div>
       </div>
 
-
-      <div className="text-center md:text-right">
-        {title && (
-          <div>
-            © {title} {new Date().getFullYear()}
-          </div>
-        )}
+      <div className='flex flex-col md:flex-row gap-2 md:gap-8 items-end'>
+        <div className='flex md:hidden items-center gap-2 align-middle'>
+          <span className='text-primary'>
+            <RefreshCcw size={12} />
+          </span>
+          {`Updated March 2025`}
+        </div>
+        <div className="text-center md:text-right">
+          {title && (
+            <div>
+              © {title} {new Date().getFullYear()}
+            </div>
+          )}
+        </div>
       </div>
 
     </footer >

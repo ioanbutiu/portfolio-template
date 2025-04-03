@@ -32,11 +32,11 @@ export function AboutPage({ data }: AboutPageProps) {
         {sections && sections.map((section) => {
           return (
             <div key={section._key} className='flex flex-col md:flex-row items-start mb-1 last:mb-0 transition-colors'>
-              <div className='text-xxs uppercase font-mono w-1/3 flex items-center leading-none gap-2 text-secondary'>
+              <div className='text-xxs uppercase font-mono md:w-1/3 flex items-center leading-none gap-2 text-secondary mb-8'>
                 <div className='h-2 w-2 bg-secondary'></div>
                 <span>{section.heading}</span>
               </div>
-              <div className='w-2/3 text-pretty mb-12'>
+              <div className='md:w-2/3 text-pretty mb-12'>
                 {/* <div className='text-xxs uppercase font-mono w-1/3 flex items-center leading-none gap-2 text-secondary mb-4'>
                   <div className='h-2 w-2 bg-secondary'></div>
                   <span>{section.heading}</span>

@@ -87,7 +87,7 @@ export function Header(props: HeaderProps) {
     <div
       ref={headerRef}
       style={{ '--header-opacity': opacity } as React.CSSProperties}
-      className="w-full flex flex-col gap-4 mb-0 sticky top-16 -z-10 pt-48 pb-52 justify-center items-center min-h-[60vh]"
+      className="w-full flex flex-col gap-4 mb-0 sticky top-16 -z-10 pt-16 pb-16 md:pt-48 md:pb-52 justify-center items-center min-h-[60vh]"
     >
       <AsciiBackground />
 
@@ -116,7 +116,7 @@ export function Header(props: HeaderProps) {
             position: 'relative',
             zIndex: 10
           }}
-          className="col-span-12 text-center text-pretty text-4xl leading-snug max-w-[50ch] font-sans w-full"
+          className="col-span-12 text-center text-pretty text-xl md:text-4xl leading-snug max-w-[50ch] font-sans w-full"
         >
           {description.displayText == true && (
             <CustomPortableText value={description.text} />
@@ -126,7 +126,7 @@ export function Header(props: HeaderProps) {
       <div
         className='absolute bottom-0 w-full flex justify-between font-mono text-xxs uppercase -mb-12 leading-none'
       >
-        <div className='flex gap-8'>
+        <div className='flex flex-col md:flex-row gap-2 md:gap-8'>
           <div className='flex items-center gap-2 align-middle'>
             <span className='text-primary'>
               <Navigation size={12} />
@@ -139,7 +139,7 @@ export function Header(props: HeaderProps) {
             </span>
             {time}
           </div>
-          <div className='flex items-center gap-2 align-middle'>
+          <div className='md:flex items-center gap-2 align-middle hidden'>
             <span className='text-primary'>
               <RefreshCcw size={12} />
             </span>
@@ -147,8 +147,16 @@ export function Header(props: HeaderProps) {
           </div>
         </div>
 
-        <div className="text-center md:text-right flex items-center gap-2 align-middle">
-          <Copyright size={12} /> <span>Ioan Butiu {new Date().getFullYear()}</span>
+        <div className='flex flex-col md:flex-row gap-2 md:gap-8 items-end'>
+          <div className='flex md:hidden items-center gap-2 align-middle'>
+            <span className='text-primary'>
+              <RefreshCcw size={12} />
+            </span>
+            {`Updated March 2025`}
+          </div>
+          <div className="text-center md:text-right flex items-center gap-2 align-middle">
+            <Copyright size={12} /> <span>Ioan Butiu {new Date().getFullYear()}</span>
+          </div>
         </div>
       </div>
     </div>
