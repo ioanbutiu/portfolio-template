@@ -2,6 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Isola;
+  src: url('/fonts/IsolaTrial-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: IsolaMono;
+  src: url('/fonts/IsolaMonoTrial-Regular.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Neureal;
+  src: url('/fonts/NeurealTrial-Mono.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: GaisyrMono;
+  src: url('/fonts/ABCGaisyrMonoUnlicensedTrial-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Gaisyr;
+  src: url('/fonts/ABCGaisyrUnlicensedTrial-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Synt;
+  src: url('/fonts/ABCSynt-Regular-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: NewEdge;
+  src: url('/fonts/NewEdge666-LightRounded.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: NewEdge;
+  src: url('/fonts/NewEdge666-RegularRounded.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Wonder;
+  src: url('/fonts/WonderType-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SerialBlur;
+  src: url('/fonts/SerialBlurTRIAL-Blur.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SerialBlur;
+  src: url('/fonts/SerialBlurTRIAL-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 @layer base {
   :root {
     --background: 0 0% 90%;
@@ -24,7 +101,7 @@
 
     --secondary-foreground: 0 0% 80%;
 
-    --muted: 0 0% 96.1%;
+    --muted: 0 0% 85%;
 
     --muted-foreground: 0 0% 45.1%;
 

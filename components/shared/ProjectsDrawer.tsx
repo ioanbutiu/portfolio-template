@@ -56,7 +56,7 @@ export function ProjectsDrawer({ projects, children }: ProjectsDrawerProps) {
         {children}
       </DrawerTrigger>
       <DrawerContent className="h-[80vh] md:h-[90vh]">
-        <DrawerHeader className="border-b border-card">
+        <DrawerHeader className="border-b border-background dark:border-card">
           <DrawerTitle className="font-mono text-xxs uppercase font-normal flex items-center">
             <span className='text-secondary'>Index</span>
           </DrawerTitle>
@@ -65,7 +65,7 @@ export function ProjectsDrawer({ projects, children }: ProjectsDrawerProps) {
           </DrawerDescription> */}
         </DrawerHeader>
         <div className="overflow-auto">
-          <div className="grid gap-0 divide-y divide-card">
+          <div className="grid gap-0 divide-y divide-background dark:divide-card">
             {projects.map((project) => {
               const href = resolveHref(project?._type, project?.slug)
               if (!href) return null
@@ -75,7 +75,7 @@ export function ProjectsDrawer({ projects, children }: ProjectsDrawerProps) {
                   key={project._id}
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="group flex flex-row items-start gap-4 md:gap-16 md:items-center justify-start hover:bg-card transition-all p-4"
+                  className="group flex flex-row items-start gap-4 md:gap-16 md:items-center justify-start hover:bg-background dark:hover:bg-card transition-all p-4"
                 >
                   <div className="w-16 md:w-32 h-auto aspect-[3/2] overflow-hidden rounded-sm shrink-0">
                     <ImageBox

@@ -1,9 +1,9 @@
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 import ImageBox from '@/components/shared/ImageBox'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { ShowcaseProject } from '@/types'
-import { ArrowRight, ArrowLeft } from 'lucide-react'
 
 interface ProjectProps {
   previous: ShowcaseProject
@@ -19,7 +19,7 @@ export function MoreProjects(props: ProjectProps) {
       <div className="">
         {previous && (
           <Link href={resolveHref(previous?._type, previous?.slug) ?? {}} className='bg-card group'>
-            <div className={`flex flex-col gap-2 md:gap-4 bg-card p-2 rounded-sm`}>
+            <div className={`flex flex-col gap-2 md:gap-4 bg-card hover:bg-muted transition-colors p-2 md:pt-4 rounded-sm`}>
 
               {/* Title */}
               <div className="flex items-center uppercase text-xxs font-mono gap-2 group-hover:opacity-70 transition-opacity duration-400"><ArrowLeft size={12} /> {previous.title}</div>
@@ -41,7 +41,7 @@ export function MoreProjects(props: ProjectProps) {
       <div className="">
         {next && (
           <Link href={resolveHref(next?._type, next?.slug) ?? {}} className='bg-card group'>
-            <div className={`flex flex-col gap-2 md:gap-4 bg-card p-2 rounded-sm`}>
+            <div className={`flex flex-col gap-2 md:gap-4 bg-card hover:bg-muted transition-colors p-2 md:pt-4 rounded-sm`}>
               {/* Title */}
               <div className="flex items-center justify-end uppercase text-xxs font-mono gap-2 group-hover:opacity-70 transition-opacity duration-400">{next.title} <ArrowRight size={12} /></div>
 

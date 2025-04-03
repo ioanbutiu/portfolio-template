@@ -23,13 +23,14 @@ interface ShowcaseProjectsProps {
 export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, updatedAt }: ShowcaseProjectsProps) {
   const [activeTagIds, setActiveTagIds] = useState<string[]>([])
   const stickyBg = useRef<HTMLDivElement>(null)
+  const stickyContainerRef = useRef<HTMLDivElement>(null)
 
   const router = useRouter()
 
   useEffect(() => {
     // Function to check if the element has reached the top of the viewport
     const checkPosition = () => {
-      if (stickyBg.current) {
+      if (stickyBg.current && stickyContainerRef) {
         const rect = stickyBg.current.getBoundingClientRect()
         const hasReachedTop = rect.top <= 100
 
@@ -37,6 +38,10 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
         stickyBg.current.style.background = hasReachedTop
           ? 'hsl(var(--background))'
           : 'transparent'
+
+        // stickyContainerRef.current.style.overflow = hasReachedTop
+        //   ? 'auto'
+        //   : ''
       }
     }
 
@@ -161,7 +166,7 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
       </div> */}
 
       {/* Right Col */}
-      <div className='col-span-12 rounded-sm flex flex-col'>
+      <div ref={stickyContainerRef} className='col-span-12 rounded-sm flex flex-col'>
         <div ref={stickyBg} id='sticky-bg' className='pt-[72px] md:pt-16 sticky top-0 z-10'>
           <div className='font-mono uppercase text-xxs md:items-center leading-none border-b-2 border-background px-4 py-4 w-full flex flex-col md:flex-row md:justify-between bg-card gap-4 items-start md:h-12 rounded-t-sm'>
             <div className='text-secondary'>
@@ -169,7 +174,7 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
               <span>{' '}</span>
               <span>({filteredProjects.length})</span>
             </div>
-            <div className='flex flex-col items-start md:flex-row md:items-center gap-4'>
+            <div className='hidden md:flex flex-col items-start md:flex-row md:items-center gap-4'>
               <span className='hidden md:block text-secondary'>{'Filter'}</span>
               {showcaseProjects && showcaseProjects.length > 0 && (
                 <ProjectFilters
@@ -205,7 +210,7 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
               })}
             </div>
           ) : (
-            <div className="py-10 text-center text-gray-500">
+            <div className="py-10 text-center text-secondary font-mono uppercase text-xxs">
               No projects match the selected filters
             </div>
           )}

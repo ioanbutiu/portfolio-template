@@ -85,7 +85,7 @@ export function Header(props: HeaderProps) {
     <div
       ref={headerRef}
       style={{ '--header-opacity': opacity } as React.CSSProperties}
-      className="w-full flex flex-col gap-4 mb-0 sticky top-16 -z-10 pt-16 pb-16 md:pt-48 md:pb-52 justify-center items-center min-h-[60vh]"
+      className="w-full flex flex-col gap-4 mb-0 sticky top-16 -z-10 pt-28 pb-20 md:pt-48 md:pb-52 justify-center items-center md:min-h-[60vh]"
     >
       <AsciiBackground />
 
@@ -114,7 +114,7 @@ export function Header(props: HeaderProps) {
             position: 'relative',
             zIndex: 10
           }}
-          className="col-span-12 text-center text-pretty text-xl md:text-4xl leading-snug max-w-[50ch] font-sans w-full"
+          className="col-span-12 text-center text-[22px] md:text-[40px] leading-[1.2] max-w-[44ch] font-display md:font-normal w-full text-pretty"
         >
           {description.displayText == true && (
             <CustomPortableText value={description.text} />
@@ -122,40 +122,55 @@ export function Header(props: HeaderProps) {
         </div>
       )}
       <div
-        className=' absolute bottom-0 w-full flex justify-between font-mono text-xxs uppercase -mb-16 md:-mb-12 leading-none'
+        className='absolute bottom-0 w-full flex justify-between font-mono text-xxs uppercase -mb-16 md:-mb-12 leading-none'
       >
         <div className='flex flex-col md:flex-row gap-2 md:gap-8'>
+
           <div className='flex items-center gap-2 align-middle'>
             <span className=''>
               <Navigation size={12} />
             </span>
             Ciudad de México
           </div>
-          <div className='flex items-center gap-2 align-middle'>
+
+          <div className='hidden md:flex items-center gap-2 align-middle'>
             <span className=''>
               <Clock size={12} />
             </span>
             {time}
           </div>
+
           <div className='md:flex items-center gap-2 align-middle hidden'>
             <span className=''>
               <RefreshCcw size={12} />
             </span>
             {`Updated March 2025`}
           </div>
+
         </div>
 
         <div className='flex flex-col md:flex-row gap-2 md:gap-8 items-end'>
-          <div className='flex md:hidden items-center gap-2 align-middle'>
+
+          <div className='md:hidden flex items-center gap-2 align-middle'>
+            <span className=''>
+              <Clock size={12} />
+            </span>
+            {time}
+          </div>
+
+          <div className='hidden items-center gap-2 align-middle'>
             <span className=''>
               <RefreshCcw size={12} />
             </span>
             {`Updated March 2025`}
           </div>
-          <div className="text-center md:text-right flex items-center gap-2 align-middle">
+
+          <div className="hidden md:flex text-center md:text-right items-center gap-2 align-middle">
             <Copyright size={12} /> <span>Ioan Butiu {new Date().getFullYear()}</span>
           </div>
+
         </div>
+
       </div>
     </div>
   )

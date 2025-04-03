@@ -15,10 +15,10 @@ export function ProjectListItem(props: ProjectProps) {
         <ImageBox
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
-          classesWrapper="relative group-hover:scale-[104%] transition-all duration-400 aspect-[3/2]"
+          classesWrapper="relative md:group-hover:scale-[104%] transition-all duration-400 aspect-[3/2]"
         />
       </div>
-      <div className="flex group-hover:opacity-70 transition-opacity duration-400">
+      <div className="flex md:group-hover:opacity-70 transition-opacity duration-400">
         <TextBox project={project} />
       </div>
     </div>
@@ -27,9 +27,9 @@ export function ProjectListItem(props: ProjectProps) {
 
 function TextBox({ project }: { project: ShowcaseProject }) {
   return (
-    <div className="flex flex-col justify-between mt-4 mb-4 gap-2 w-full items-start">
+    <div className="flex flex-col justify-between mt-4 mb-4 gap-3 md:gap-2 w-full items-start">
       {/* Title */}
-      <div className="flex text-2xl">{project.title}</div>
+      <div className="flex text-2xl font-display leading-tight">{project.title}</div>
       <div className='flex gap-1 flex-wrap'>
         {/* Tags */}
         {project.tags && project.tags.map((tag) => {

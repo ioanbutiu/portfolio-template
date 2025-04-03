@@ -20,9 +20,10 @@ export function ProjectFilter(props: ProjectFilterProps) {
       className={cn(
         'items-center flex gap-1 align-middle leading-none self-start px-1.5 py-1 rounded-sm',
         'text-xxs font-mono uppercase transition-colors',
-        isActive || isHovered
+        // isActive || isHovered
+        isActive
           ? 'bg-primary text-primary-foreground'
-          : 'bg-secondary-foreground text-primary',
+          : 'bg-secondary-foreground text-primary md:hover:bg-primary md:hover:text-primary-foreground',
         ''
       )}
       onMouseEnter={() => setIsHovered(true)}

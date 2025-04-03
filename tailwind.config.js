@@ -20,9 +20,11 @@ module.exports = {
   theme: {
     ...theme,
     fontFamily: {
-      sans: 'sans-serif, Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+      sans: 'Arial, sans-serif, Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       serif: 'serif, Times New Roman, Times, serif',
       mono: 'monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+      display:
+        'SerialBlur, GaisyrMono, Wonder, Arial Narrow, Neureal, sans-serif',
     },
     extend: {
       colors: {

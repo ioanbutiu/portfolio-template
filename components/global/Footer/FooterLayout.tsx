@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 import { HeaderLink } from '@/components/shared/HeaderLink'
+import { cn } from '@/lib/utils';
 import type { HomePagePayload, SettingsPayload } from '@/types'
 
 
@@ -43,16 +44,16 @@ export default function Footer(props: FooterProps) {
 
   const pathname = usePathname()
 
-  if (pathname === '/') {
-    return null
-  }
+  // if (pathname === '/') {
+  //   return null
+  // }
 
   const title = props.title
   const lastUpdated = props.homepage?._updatedAt ?? ''
   const displayLastUpdate = props.data?.displayLastUpdated
   const footerLinks = props.data?.footerLinks
   return (
-    <footer className="uppercase text-xxs font-mono bottom-0 flex justify-between mt-12 lg:mt-0 gap-4 md:gap-x-4 px-4 md:px-4 py-2 md:py-4 lg:px-4 w-full">
+    <footer className={cn("uppercase text-xxs font-mono bottom-0 flex justify-between md:mt-12 lg:mt-0 gap-4 md:gap-x-4 p-2 pb-4 md:p-4 lg:p-4 w-full", pathname === '/' ? 'md:hidden' : '')}>
       {/* {displayLastUpdate == true ? (
         <div className="text-center md:text-left col-span-3 self-center col-start-4">
           {`Updated `}
@@ -70,7 +71,7 @@ export default function Footer(props: FooterProps) {
             )
           })}
       </div> */}
-      <div className='flex flex-col md:flex-row gap-2 md:gap-8'>
+      <div className='hidden md:flex flex-col md:flex-row gap-2 md:gap-8'>
         <div className='flex items-center gap-2 align-middle'>
           <span className='text-primary'>
             <Navigation size={14} />
@@ -97,7 +98,7 @@ export default function Footer(props: FooterProps) {
         </div>
       </div>
 
-      <div className='flex flex-col md:flex-row gap-2 md:gap-8 items-end'>
+      <div className='flex w-full md:w-max justify-between flex-row gap-2 md:gap-8 items-end'>
         <div className='flex md:hidden items-center gap-2 align-middle'>
           <span className='text-primary'>
             <RefreshCcw size={12} />
