@@ -2,14 +2,15 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { HeaderLink } from '@/components/shared/HeaderLink'
 import { Switch } from "@/components/ui/switch"
+import { cn } from '@/lib/utils'
 import { resolveHref, urlForLogo } from '@/sanity/lib/utils'
 import type { LinkItem, PageItem, SettingsPayload, ShowcaseProject } from '@/types'
+
 import ThemeSwitch from './ThemeSwitch'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
 
 interface NavbarProps {
   data: SettingsPayload
@@ -33,7 +34,7 @@ export default function Navbar(props: NavbarProps) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("flex flex-wrap justify-between items-center gap-x-2 gap-y-2 px-4 md:py-4 lg:px-4 sticky top-0 z-50 w-full h-auto md:h-16 pt-4", pathname !== '/' ? '' : '')}>
+    <div className={cn("flex flex-wrap justify-between items-center gap-1 md:gap-2 px-4 md:py-4 lg:px-4 sticky top-0 z-50 w-full h-auto md:h-16 pt-4", pathname !== '/' ? '' : '')}>
       {customLogo && customLogo ? (
         <Link href={`/`} className={`h-full hover:text-secondary`}>
           <div className="flex h-6">
@@ -55,7 +56,7 @@ export default function Navbar(props: NavbarProps) {
 
 
       )}
-      <div className={cn("flex flex-wrap order-3 md:order-none w-full gap-2 md:gap-1 col-span-6 justify-center md:w-max", pathname !== '/' ? '' : '')}>
+      <div className={cn("flex flex-wrap order-3 md:order-none w-full gap-1 col-span-6 justify-center md:w-max", pathname !== '/' ? '' : '')}>
 
         {menuPages &&
           menuPages.map((menuItem, key) => {

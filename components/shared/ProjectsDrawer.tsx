@@ -1,14 +1,11 @@
 'use client'
 
+import { SquareArrowOutUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { resolveHref } from '@/sanity/lib/utils'
-import { ShowcaseProject } from '@/types'
-import { SquareArrowOutUpRight } from 'lucide-react'
-import { ProjectTag } from '@/components/shared/ProjectTag'
+
 import ImageBox from '@/components/shared/ImageBox'
-
-
+import { ProjectTag } from '@/components/shared/ProjectTag'
 import {
   Drawer,
   DrawerClose,
@@ -19,6 +16,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/ui/drawer'
+import { resolveHref } from '@/sanity/lib/utils'
+import { ShowcaseProject } from '@/types'
 
 interface ProjectsDrawerProps {
   projects: ShowcaseProject[]
@@ -56,7 +55,7 @@ export function ProjectsDrawer({ projects, children }: ProjectsDrawerProps) {
       <DrawerTrigger asChild>
         {children}
       </DrawerTrigger>
-      <DrawerContent className="h-[90vh]">
+      <DrawerContent className="h-[80vh] md:h-[90vh]">
         <DrawerHeader className="border-b border-card">
           <DrawerTitle className="font-mono text-xxs uppercase font-normal flex items-center">
             <span className='text-secondary'>Index</span>

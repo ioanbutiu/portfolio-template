@@ -1,9 +1,10 @@
 'use client'
 
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { Clock, Copyright, Navigation, RefreshCcw } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { AsciiBackground } from '@/components/shared/AsciiBackground'
-import { Clock, Navigation, RefreshCcw, Copyright } from 'lucide-react';
-import React, { useEffect, useState, useRef } from 'react';
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
 interface HeaderProps {
   description?: any
@@ -11,9 +12,6 @@ interface HeaderProps {
 
 export function Header(props: HeaderProps) {
   const { description } = props
-  if (!description) {
-    return null
-  }
 
   const [time, setTime] = useState('');
   const [opacity, setOpacity] = useState(1);
@@ -124,23 +122,23 @@ export function Header(props: HeaderProps) {
         </div>
       )}
       <div
-        className='absolute bottom-0 w-full flex justify-between font-mono text-xxs uppercase -mb-12 leading-none'
+        className=' absolute bottom-0 w-full flex justify-between font-mono text-xxs uppercase -mb-16 md:-mb-12 leading-none'
       >
         <div className='flex flex-col md:flex-row gap-2 md:gap-8'>
           <div className='flex items-center gap-2 align-middle'>
-            <span className='text-primary'>
+            <span className=''>
               <Navigation size={12} />
             </span>
             Ciudad de México
           </div>
           <div className='flex items-center gap-2 align-middle'>
-            <span className='text-primary'>
+            <span className=''>
               <Clock size={12} />
             </span>
             {time}
           </div>
           <div className='md:flex items-center gap-2 align-middle hidden'>
-            <span className='text-primary'>
+            <span className=''>
               <RefreshCcw size={12} />
             </span>
             {`Updated March 2025`}
@@ -149,7 +147,7 @@ export function Header(props: HeaderProps) {
 
         <div className='flex flex-col md:flex-row gap-2 md:gap-8 items-end'>
           <div className='flex md:hidden items-center gap-2 align-middle'>
-            <span className='text-primary'>
+            <span className=''>
               <RefreshCcw size={12} />
             </span>
             {`Updated March 2025`}

@@ -1,18 +1,18 @@
 'use client'
 
-import { X, SquareArrowOutUpRight } from 'lucide-react'
 import { SiGithub } from '@icons-pack/react-simple-icons'
+import { SquareArrowOutUpRight, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { useCallback, useMemo, useState, useRef } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useEffect } from 'react'
 
+import { HomeMetadata } from '@/components/shared/HomeMetadata'
 import { resolveHref } from '@/sanity/lib/utils'
 import { ShowcaseProject } from '@/types'
 
 import { ProjectFilters } from './ProjectFilters'
 import { ProjectListItem } from './ProjectListItem'
-import { HomeMetadata } from '@/components/shared/HomeMetadata'
 
 interface ShowcaseProjectsProps {
   showcaseProjects: ShowcaseProject[]
@@ -162,15 +162,15 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
 
       {/* Right Col */}
       <div className='col-span-12 rounded-sm flex flex-col'>
-        <div ref={stickyBg} id='sticky-bg' className='pt-16 sticky top-0 z-10'>
+        <div ref={stickyBg} id='sticky-bg' className='pt-20 md:pt-16 sticky top-0 z-10'>
           <div className='font-mono uppercase text-xxs md:items-center leading-none border-b-2 border-background px-4 py-4 w-full flex flex-col md:flex-row md:justify-between bg-card gap-4 items-start md:h-12 rounded-t-sm'>
-            <div className=''>
-              <span>{'Selected Work'}</span>
+            <div className='text-secondary'>
+              <span className=''>{'Selected Work'}</span>
               <span>{' '}</span>
               <span>({filteredProjects.length})</span>
             </div>
             <div className='flex flex-col items-start md:flex-row md:items-center gap-4'>
-              <span className='hidden md:block'>{'Filter'}</span>
+              <span className='hidden md:block text-secondary'>{'Filter'}</span>
               {showcaseProjects && showcaseProjects.length > 0 && (
                 <ProjectFilters
                   projects={showcaseProjects}

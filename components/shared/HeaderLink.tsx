@@ -1,10 +1,11 @@
 'use client'
 
+import { SquareArrowOutUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { SquareArrowOutUpRight } from 'lucide-react'
 
+import { ProjectsDrawer } from '@/components/shared/ProjectsDrawer'
 import {
   Dialog,
   DialogContent,
@@ -13,8 +14,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-
-import { ProjectsDrawer } from '@/components/shared/ProjectsDrawer'
 import { ShowcaseProject } from '@/types'
 
 interface HeaderLinks {
@@ -118,8 +117,8 @@ export function HeaderLink(props: HeaderLinks) {
         <DialogContent className="max-w-xs md:max-w-md aspect-[5/6] border-none p-4 rounded-md">
           <DialogHeader>
             <DialogTitle className="font-mono text-xxs uppercase font-normal h-8 flex items-center"><span className='text-secondary'>Contact</span></DialogTitle>
-            <DialogDescription className="pt-2 text-2xl md:text-3xl text-left">
-              Get in touch if you want more information about my work or if you'd like to discuss a project
+            <DialogDescription className="pt-2 text-2xl md:text-3xl text-left text-balance">
+              Get in touch if you want more information about my work or if you&apos;d like to discuss a project
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-2 grow md:grow-0">

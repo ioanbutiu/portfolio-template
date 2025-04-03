@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
-import { Tag } from '@/types'
 import { ProjectTag } from '@/components/shared/ProjectTag'
+import { Tag } from '@/types'
 
 interface ProjectHeaderProps {
   title?: string
