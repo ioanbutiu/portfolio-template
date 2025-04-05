@@ -192,8 +192,19 @@
   a {
     @apply no-underline;
   }
+
+  /* Custom focus style using primary color variable */
+  *:focus-visible {
+    outline: 1px solid hsl(var(--primary));
+    outline-offset: 1px;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+mux-player {
+  /* Hide all controls at once */
+  --controls: none;
 }

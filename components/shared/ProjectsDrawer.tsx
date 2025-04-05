@@ -84,18 +84,17 @@ export function ProjectsDrawer({ projects, children }: ProjectsDrawerProps) {
                       classesWrapper="relative group-hover:scale-[104%] transition-all duration-400 aspect-[3/2]"
                     />
                   </div>
-                  <div className='flex flex-col md:flex-row grow'>
-                    <div className='md:w-2/5'>
-
-                      <span className="text-xl">{project.title}</span>
+                  <div className='flex flex-col md:flex-row self-center grow'>
+                    <div className='md:w-1/2'>
+                      <span className="text-2xl text-balance font-display">{project.title}</span>
                     </div>
-                    <div className='hidden md:flex gap-2 grow'>
+                    <div className='hidden md:flex self-center items-center gap-2 grow'>
                       {/* Tags */}
                       {project.tags && project.tags.slice(0, project.tags.length - 1).map((tag) => {
                         return <ProjectTag key={tag._id} {...tag} />
                       })}
                     </div>
-                    <div className='hidden md:block'>
+                    <div className='hidden md:block self-center'>
                       {/* Year */}
                       {project.tags && project.tags.slice(project.tags.length - 1).map((tag) => {
                         return <ProjectTag key={tag._id} {...tag} />

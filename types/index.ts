@@ -119,3 +119,23 @@ export interface AboutPayload {
   }
   aboutLinks?: LinkItem[]
 }
+
+export interface SketchContent {
+  _type: string
+  _key: string
+  image?: {
+    asset?: any
+    lqip?: string
+  }
+  video?: {
+    asset?: any
+  }
+  caption?: string
+  size?: string
+}
+
+export interface SketchesPayload {
+  _id: string
+  title?: string
+  content?: SketchContent[]
+}

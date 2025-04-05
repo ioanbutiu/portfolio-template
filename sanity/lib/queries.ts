@@ -180,3 +180,33 @@ export const settingsQuery = groq`
     displayLastUpdated,
   }
 `
+
+export const sketchesQuery = groq`
+  *[_type == "sketches"][0]{
+    _id,
+    title,
+    content[]{
+      _type == 'sketchImage' => {
+        _type,
+        _key,
+        image{
+          _type,
+          asset,
+          "lqip": asset->metadata.lqip,
+        },
+        caption,
+        size,
+      },
+      _type == 'sketchVideo' => {
+        _type,
+        _key,
+        video{
+          _type,
+          asset->,
+        },
+        caption,
+        size,
+      },
+    },
+  }
+`

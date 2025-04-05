@@ -31,6 +31,24 @@ export function HeaderLink(props: HeaderLinks) {
   const isContact = title === 'Contact'
   const isIndex = title === 'Index'
 
+  // Removed duplicate key event handler - using the one with visual feedback below
+
+  const isActive = pathname === href && href !== '/'
+
+  // State to track when button is pressed via keyboard
+  const [keyPressed, setKeyPressed] = useState(false)
+
+  // Add effect to simulate button click when key is pressed
+  useEffect(() => {
+    if (keyPressed) {
+      const timer = setTimeout(() => {
+        setKeyPressed(false)
+      }, 200) // Reset the state after 200ms
+      return () => clearTimeout(timer)
+    }
+  }, [keyPressed])
+
+  // Update key press handler to show active state
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       // Ignore key presses if user is typing in an input or textarea
@@ -46,6 +64,7 @@ export function HeaderLink(props: HeaderLinks) {
       // Handle contact dialog with 'c' key - toggle open/closed
       if (key === 'c' && isContact) {
         event.preventDefault()
+        setKeyPressed(true)
         setOpen(prevOpen => !prevOpen)
         return
       }
@@ -53,6 +72,7 @@ export function HeaderLink(props: HeaderLinks) {
       // Handle home navigation with forward slash
       if (key === '/' && href === '/') {
         event.preventDefault()
+        setKeyPressed(true)
         router.push('/')
         return
       }
@@ -60,6 +80,7 @@ export function HeaderLink(props: HeaderLinks) {
       // Handle Are.na link with asterisk  
       if (key === '*' && title === 'Are.na') {
         event.preventDefault()
+        setKeyPressed(true)
         window.open(href, '_blank')
         return
       }
@@ -67,10 +88,20 @@ export function HeaderLink(props: HeaderLinks) {
       // Handle Instagram link with n  
       if (key === 'n' && title === 'Instagram') {
         event.preventDefault()
+        setKeyPressed(true)
         window.open(href, '_blank')
         return
       }
 
+      // Handle Index button with 'i' key
+      if (key === 'i' && isIndex) {
+        event.preventDefault()
+        setKeyPressed(true)
+        // For Index, we're just showing the visual feedback
+        // The drawer is handled by the ProjectsDrawer component
+        return
+      }
+      
       // Handle navigation for other links using first letter
       if (title &&
         title !== 'Are.na' &&
@@ -80,6 +111,7 @@ export function HeaderLink(props: HeaderLinks) {
         title !== 'Ioan Butiu' &&
         key === title.charAt(0).toLowerCase()) {
         event.preventDefault()
+        setKeyPressed(true)
         if (target === '_blank') {
           window.open(href, '_blank')
         } else {
@@ -92,13 +124,14 @@ export function HeaderLink(props: HeaderLinks) {
     return () => window.removeEventListener('keydown', handleKeyPress)
   }, [href, title, router, target, setOpen, isContact])
 
-  const isActive = pathname === href && href !== '/'
+  // Common button style including active/pressed state
+  const buttonStyle = `${isActive ? 'bg-primary text-primary-foreground' : keyPressed ? 'bg-muted text-primary scale-95' : 'bg-card text-primary md:hover:bg-muted'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 min-h-7 pt-2 pb-2 leading-none transition-all transform active:scale-95 grow md:grow-0 text-left`
 
   // Return link wrapped in a projects drawer if it's the Index link
   if (isIndex && projects.length > 0) {
     return (
       <ProjectsDrawer projects={projects}>
-        <button className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 min-h-7 pt-2 pb-2 leading-none md:hover:bg-primary md:hover:text-primary-foreground transition-colors grow md:grow-0 text-left`}>
+        <button className={buttonStyle}>
           <span className='hidden md:inline'>[I]</span>{` `}{title}
         </button>
       </ProjectsDrawer>
@@ -110,7 +143,7 @@ export function HeaderLink(props: HeaderLinks) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <button className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 min-h-7 pt-2 pb-2 leading-none md:hover:bg-primary md:hover:text-primary-foreground transition-colors grow md:grow-0 text-left`}>
+          <button className={buttonStyle}>
             <span className='hidden md:inline'>[C]</span>{` `}{title}
           </button>
         </DialogTrigger>
@@ -122,19 +155,19 @@ export function HeaderLink(props: HeaderLinks) {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-2 grow md:grow-0">
-            <Link href="mailto:ioan.butiu@gmail.com" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between">
+            <Link href="mailto:ioan.butiu@gmail.com" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between active:scale-95">
               Email
               <SquareArrowOutUpRight size={14} className='text-primary-foreground group-md:hover:opacity-100 opacity-0 transition-all' />
             </Link>
-            <Link href="https://github.com/ioanbutiu" target="_blank" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between">
+            <Link href="https://github.com/ioanbutiu" target="_blank" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between active:scale-95">
               GitHub
               <SquareArrowOutUpRight size={14} className='text-primary-foreground group-md:hover:opacity-100 opacity-0 transition-all' />
             </Link>
-            <Link href="https://linkedin.com/in/ioanbutiu" target="_blank" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between">
+            <Link href="https://linkedin.com/in/ioanbutiu" target="_blank" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between active:scale-95">
               LinkedIn
               <SquareArrowOutUpRight size={14} className='text-primary-foreground md:group-hover:opacity-100 opacity-0 transition-all' />
             </Link>
-            <Link href="https://instagram.com/ioanbutiu" target="_blank" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between">
+            <Link href="https://instagram.com/ioanbutiu" target="_blank" className="group flex items-center gap-1 text-sm md:hover:text-primary-foreground md:hover:bg-primary transition-all bg-card rounded-sm px-4 py-2 justify-between active:scale-95">
               Instagram
               <SquareArrowOutUpRight size={14} className='text-primary-foreground md:group-hover:opacity-100 opacity-0 transition-all' />
             </Link>
@@ -146,7 +179,11 @@ export function HeaderLink(props: HeaderLinks) {
 
   // Return normal link for other links
   return (
-    <Link className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-card text-primary'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 pt-2 pb-2 leading-none hover:bg-primary hover:text-primary-foreground transition-colors min-h-7 whitespace-nowrap grow md:grow-0`} href={href} target={target}>
+    <Link
+      className={`${isActive ? 'bg-primary text-primary-foreground' : keyPressed ? 'bg-muted text-primary scale-95' : 'bg-card text-primary md:hover:bg-muted'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 pt-2 pb-2 leading-none transition-all transform active:scale-95 min-h-7 whitespace-nowrap grow md:grow-0`}
+      href={href}
+      target={target}
+    >
       <span className='hidden md:inline'>[{title && href !== '/' ? title === 'Are.na' ? '*' : title === 'Instagram' ? 'N' : title.charAt(0) : '/'}]</span>{` `}{title}
     </Link>
   )

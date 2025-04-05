@@ -12,6 +12,7 @@ import {
   moreProjectsQuery,
   projectBySlugQuery,
   settingsQuery,
+  sketchesQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
@@ -20,6 +21,7 @@ import {
   ProjectPayload,
   SettingsPayload,
   ShowcaseProject,
+  SketchesPayload,
 } from '@/types'
 
 const serverClient = client.withConfig({
@@ -127,5 +129,13 @@ export function loadAllProjects() {
     allProjectsQuery,
     {},
     { next: { tags: ['project'] } },
+  )
+}
+
+export function getSketchesPage() {
+  return loadQuery<SketchesPayload | null>(
+    sketchesQuery,
+    {},
+    { next: { tags: ['sketches'] } },
   )
 }

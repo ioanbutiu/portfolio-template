@@ -75,6 +75,7 @@ export default function Navbar(props: NavbarProps) {
           })}
         <HeaderLink href='#' title={'Contact'} />
         <HeaderLink href={'#'} title={'Index'} projects={props.projects || []} />
+        <HeaderLink href={'/sketches'} title={'Sketches'} />
         {/* <HeaderLink target={'_blank'} href={'mailto:ioan.butiu@gmail.com'} title={'Email'} /> */}
         {/* <HeaderLink href={'/blog'} title={'Blog'} /> */}
         {/* <HeaderLink href={'/guestbook'} title={'Guestbook'} /> */}
