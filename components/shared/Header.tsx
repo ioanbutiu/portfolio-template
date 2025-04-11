@@ -61,7 +61,7 @@ export function Header(props: HeaderProps) {
   useEffect(() => {
     // Set initial time
     setTime(new Date().toLocaleTimeString('en-US', {
-      timeZone: 'America/Mexico_City',
+      timeZone: 'America/New_York',
       hour12: false,
       hour: 'numeric',
       minute: '2-digit',
@@ -70,7 +70,7 @@ export function Header(props: HeaderProps) {
 
     const timer = setInterval(() => {
       setTime(new Date().toLocaleTimeString('en-US', {
-        timeZone: 'America/Mexico_City',
+        timeZone: 'America/New_York',
         hour12: false,
         hour: 'numeric',
         minute: '2-digit',
@@ -130,7 +130,7 @@ export function Header(props: HeaderProps) {
             <span className=''>
               <Navigation size={12} />
             </span>
-            Ciudad de México
+            New York City
           </div>
 
           <div className='hidden md:flex items-center gap-2 align-middle'>

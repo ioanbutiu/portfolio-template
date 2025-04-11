@@ -72,6 +72,38 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'details',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          name: 'detailItem',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'role',
+              type: 'string',
+            }),
+            defineField({
+              name: 'name',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: {
+              role: 'role',
+              name: 'name',
+            },
+            prepare({ role, name }) {
+              return {
+                title: name,
+                subtitle: role,
+              }
+            },
+          },
+        }),
+      ],
+    }),
+    defineField({
       name: 'year',
       description:
         '(Optional) This freeform field is for year or type of your project. It will be displayed next to title in the projects list within the homepage and below title at project page.',

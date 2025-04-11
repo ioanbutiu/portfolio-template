@@ -62,6 +62,11 @@ export interface ProjectPayload {
   coverImage?: Image
   description?: PortableTextBlock[]
   overview?: PortableTextBlock[]
+  details?: {
+    _key: string
+    role: string
+    name: string
+  }[]
   site?: {
     urltitle?: string
     url: string

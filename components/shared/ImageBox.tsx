@@ -43,7 +43,7 @@ export default function ImageBox({
 
   return (
     <div
-      className={`w-full h-auto overflow-hidden rounded-[4px] ${classesWrapper}`}
+      className={`w-full h-auto overflow-hidden ${classesWrapper}`}
       data-sanity={props['data-sanity']}
     >
       {imageUrl && (
@@ -64,7 +64,7 @@ export default function ImageBox({
         //   src={imageUrl}
         // />
         <Image
-          className="absolute w-full h-full object-cover"
+          className="absolute w-full h-full object-contain"
           ref={ref}
           style={{
             opacity: inView ? 1 : 0,

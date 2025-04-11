@@ -1,8 +1,8 @@
 import './globals.css'
 
+import { ThemeScript } from '@/components/global/ThemeScript'
 // import { Inter } from 'next/font/google'
 import { loadSettings } from '@/sanity/loader/loadQuery'
-import { ThemeScript } from '@/components/global/ThemeScript'
 
 // const sans = Inter({
 //   variable: '--font-sans',

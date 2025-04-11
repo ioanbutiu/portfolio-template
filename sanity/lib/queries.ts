@@ -35,6 +35,7 @@ export const moreProjectsQuery = groq`
         _type,
         asset,
         "lqip": asset->metadata.lqip,
+        "dimensions": asset->metadata.dimensions
       },
       overview,
       "slug": slug.current,
@@ -76,6 +77,7 @@ export const projectBySlugQuery = groq`
     coverImage,
     description,
     overview,
+    details,
     tags[]->,
     site,
     "slug": slug.current,
@@ -143,6 +145,7 @@ export const allProjectsQuery = groq`
       _type,
       asset,
       "lqip": asset->metadata.lqip,
+      "dimensions": asset->metadata.dimensions
     },
     overview,
     tags[]->

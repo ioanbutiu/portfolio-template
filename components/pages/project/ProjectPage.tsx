@@ -21,7 +21,7 @@ export function ProjectPage({
   encodeDataAttribute,
 }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { year, overview, site, tags, title, content, slug } = data ?? {}
+  const { year, overview, details, site, tags, title, content, slug } = data ?? {}
 
   // Get a list of showcased projects
   const { showcaseProjects = [] } = moreProjects ?? {}
@@ -36,7 +36,7 @@ export function ProjectPage({
 
   return (
     <div className='w-full px-2 md:px-0'>
-      <div className='md:w-3/4 mx-auto'>
+      <div className='mx-auto'>
 
         <div className="mb-10 md:mb-20 space-y-4">
           <ProjectHeader
@@ -45,6 +45,7 @@ export function ProjectPage({
             tags={tags}
             site={site}
             overview={overview}
+            details={details}
           />
           <div>
             {/* Display project content by type */}

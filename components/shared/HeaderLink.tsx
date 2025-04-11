@@ -50,12 +50,23 @@ export function HeaderLink(props: HeaderLinks) {
 
   // Update key press handler to show active state
   useEffect(() => {
+    console.log('Setting up key listener')
+
     const handleKeyPress = (event: KeyboardEvent) => {
+      console.log('Key pressed:', event.key, 'Meta:', event.metaKey, 'Ctrl:', event.ctrlKey)
+
       // Ignore key presses if user is typing in an input or textarea
       if (
         document.activeElement?.tagName === 'INPUT' ||
         document.activeElement?.tagName === 'TEXTAREA'
       ) {
+        console.log('Ignoring - in input/textarea')
+        return
+      }
+
+      // Skip if modifier keys are pressed (CMD, CTRL, ALT, SHIFT)
+      if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+        console.log('Ignoring - modifier key pressed')
         return
       }
 
@@ -101,7 +112,7 @@ export function HeaderLink(props: HeaderLinks) {
         // The drawer is handled by the ProjectsDrawer component
         return
       }
-      
+
       // Handle navigation for other links using first letter
       if (title &&
         title !== 'Are.na' &&
@@ -122,7 +133,8 @@ export function HeaderLink(props: HeaderLinks) {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [href, title, router, target, setOpen, isContact])
+
+  }, [href, title, router, target, setOpen, isContact, isIndex])
 
   // Common button style including active/pressed state
   const buttonStyle = `${isActive ? 'bg-primary text-primary-foreground' : keyPressed ? 'bg-muted text-primary scale-95' : 'bg-card text-primary md:hover:bg-muted'} font-mono uppercase rounded-sm text-xxs pl-2 pr-2.5 min-h-7 pt-2 pb-2 leading-none transition-all transform active:scale-95 grow md:grow-0 text-left`

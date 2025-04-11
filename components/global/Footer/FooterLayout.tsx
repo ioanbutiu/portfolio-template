@@ -22,7 +22,7 @@ export default function Footer(props: FooterProps) {
   useEffect(() => {
     // Set initial time
     setTime(new Date().toLocaleTimeString('en-US', {
-      timeZone: 'America/Mexico_City',
+      timeZone: 'America/New_York',
       hour12: false,
       hour: 'numeric',
       minute: '2-digit',
@@ -31,7 +31,7 @@ export default function Footer(props: FooterProps) {
 
     const timer = setInterval(() => {
       setTime(new Date().toLocaleTimeString('en-US', {
-        timeZone: 'America/Mexico_City',
+        timeZone: 'America/New_York',
         hour12: false,
         hour: 'numeric',
         minute: '2-digit',
@@ -76,7 +76,7 @@ export default function Footer(props: FooterProps) {
           <span className='text-primary'>
             <Navigation size={14} />
           </span>
-          Ciudad de México
+          New York City
         </div>
         <div className='flex items-center gap-2 align-middle'>
           <span className='text-primary'>
