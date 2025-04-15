@@ -15,7 +15,7 @@ export function ProjectListItem(props: ProjectProps) {
         <ImageBox
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
-          classesWrapper="relative md:group-hover:scale-[104%] transition-all duration-400 aspect-[3/2]"
+          classesWrapper="relative md:group-hover:scale-[104%] transition-all duration-400 aspect-[3/2] object-cover"
         />
       </div>
       <div className="flex md:group-hover:opacity-70 transition-opacity duration-400">

@@ -64,7 +64,7 @@ export default function ImageBox({
         //   src={imageUrl}
         // />
         <Image
-          className="absolute w-full h-full object-contain"
+          className="absolute w-full h-full object-cover"
           ref={ref}
           style={{
             opacity: inView ? 1 : 0,
