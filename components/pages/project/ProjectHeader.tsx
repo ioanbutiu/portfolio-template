@@ -37,12 +37,12 @@ export function ProjectHeader(props: ProjectHeaderProps) {
       {/* Year */}
       {/* {year && <div className="md:mt-2">{year}</div>} */}
 
-      <div className="md:w-1/2 text-pretty">
+      <div className="md:w-1/2">
         {/* Overview */}
-        {overview && <CustomPortableText value={overview} paragraphClasses='!mb-0' />}
+        {overview && <CustomPortableText value={overview} paragraphClasses='!mb-0 text-pretty' />}
 
         {/* Site */}
-        {site && (
+        {site && site.url ? (
           <Link
             target="_blank"
             className="link mt-4 inline-block"
@@ -50,13 +50,13 @@ export function ProjectHeader(props: ProjectHeaderProps) {
           >
             {site.urltitle}
           </Link>
-        )}
+        ) : (<span className="mt-4 inline-block">{site?.urltitle}</span>)}
 
         {/* Details */}
         {details && (
           <div className='my-4'>
             {details.map(detail => (
-              <div key={detail._key} className='flex items-baseline'><span className='shrink-0 text-secondary'>{detail.role}:&nbsp;</span><span>{detail.name}</span></div>
+              <div key={detail._key} className=''><span className='shrink-0 text-secondary'>{detail.role}:&nbsp;</span><span>{detail.name}</span></div>
             ))}
           </div>)
         }

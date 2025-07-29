@@ -188,7 +188,7 @@ export function ShowcaseProjects({ showcaseProjects, encodeDataAttribute, update
         </div>
         <div className="px-4 py-4 flex-grow bg-card rounded-b-sm">
           {filteredProjects && filteredProjects.length > 0 ? (
-            <div className='columns-1 lg:columns-2 xl:columns-3 gap-x-4 gap-y-8'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
               {filteredProjects.map((project, key) => {
                 const href = resolveHref(project?._type, project?.slug)
                 if (!href) {
